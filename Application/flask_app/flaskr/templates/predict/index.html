@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Acceuil{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
+{%endblock%}
+
+{% block content %}
+<!-- Main page -->
+<div class="card">
+    <h1 ALIGN=CENTER>
+        Ames Immobilier
+    </h1>
+    &nbsp;
+    <p ALIGN=CENTER>
+        Welcome to Ames Immobilier, click the button below to
+        estimate home prices in the area.
+    </p>
+    <button id="modalBtn" class="location-button">
+        Make a Prediction.
+    </button>
+</div>
+<!-- Results section -->
+<div id="result" class="result">
+    <p id="result-p">The house would cost about: {{data}}</p>
+    <button id="another" class="location-button">
+        Make another Prediction.
+    </button>
+</div>
+<!-- Modals section -->
+<div id="simpleModal" class="bg-modal">
+    <form action="{{url_for('predict.index')}}" method="post">
+        <div class="predict-form ">
+            <div class="closeBtn">+</div>
+            <div class="title">Home details</div>
+            <div class="input-container ic1">
+                <input type="number" name="MasVnrArea" id="MasVnrArea" class="input_form" required placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Masonry Veneer Area (ft²)</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="GarAreaPerCar" id="GarAreaPerCar" class="input_form" required
+                    placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Garage Area per car (ft²)</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="TotalHouseSF" id="TotalHouseSF" class="input_form" required placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Total Home Area (ft²)</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="TotalFullBath" id="TotalFullBath" class="input_form" required
+                    placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Total Full Baths</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="InitHouseAge" id="InitHouseAge" class="input_form" required placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Years since construction</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="RemodHouseAge" id="RemodHouseAge" class="input_form" required
+                    placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Years since last remodel</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="GarageAge" id="GarageAge" class="input_form" required placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Garage Age</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="TotalPorchSF" id="TotalPorchSF" class="input_form" required placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Porch Area (ft²)</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="Overall_Qual" id="Overall_Qual" class="input_form" required placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Overall Quality (1 - 10)</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="number" name="Overall_Cond" id="Overall_Cond" class="input_form" required placeholder=" ">
+                <div class="cut"></div>
+                <label for="username" class="placeholder">Overall Quality (1 - 10)</label>
+            </div>
+            <button type="submit" class="submit">Predict</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

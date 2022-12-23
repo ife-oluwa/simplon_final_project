@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Historiques{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}" />
+{% endblock %}
+
+
+{% block content %}
+
+{% if has_results == 'Yes' %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Created</th>
+            <th>Masonry Veneer Area (ft²)</th>
+            <th>Garage Area per car (ft²)</th>
+            <th>Total Home Area (ft²)</th>
+            <th>Total Full Baths</th>
+            <th>Years since construction</th>
+            <th>Years since last remodel</th>
+            <th>Garage Age</th>
+            <th>Porch Area (ft²)</th>
+            <th>Overall Quality (1 - 10)</th>
+            <th>Overall Quality (1 - 10)</th>
+            <th>Estimated Price ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(result | count) %}
+        <tr>
+            <td>{{result[i]['id']}}</td>
+            <td>{{result[i]['created']}}</td>
+            <td>{{result[i]['GarAreaPerCar']}}</td>
+            <td>{{result[i]['MasVnrArea']}}</td>
+            <td>{{result[i]['TotalHouseSF']}}</td>
+            <td>{{result[i]['TotalFullBath']}}</td>
+            <td>{{result[i]['InitHouseAge']}}</td>
+            <td>{{result[i]['RemodHouseAge']}}</td>
+            <td>{{result[i]['GarageAge']}}</td>
+            <td>{{result[i]['TotalPorchSF']}}</td>
+            <td>{{result[i]['Overall_Qual']}}</td>
+            <td>{{result[i]['Overall_Cond']}}</td>
+            <td>{{'%0.2f' % result[i]['SalePrice'] | float }}</td>
+        <tr>
+            {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="text-container">
+    <div class="history-text">
+        <h1 ALIGN=CENTER>
+            No predictions made yet.
+        </h1>
+    </div>
+    <div class="line"></div>
+</div>
+{% endif %}
+{% endblock %}
