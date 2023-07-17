@@ -1,0 +1,20 @@
+[project]
+name = "flaskr"
+version = "1.0.0"
+description = "A simple ML app"
+dependencies = [
+        "flask",
+        "scikit-learn",
+        "joblib",        
+        ]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["flaskr"]

@@ -1,3 +1,5 @@
+/** @format */
+
 .form {
   background-color: #15172b;
   border-radius: 20px;
@@ -85,11 +87,11 @@
   top: -20px;
   transform: translateY(0);
   transition: transform 200ms;
-  width: 152px;
+  width: auto;
 }
 
 .cut-short {
-  width: 50px;
+  width: auto;
 }
 
 .input_form:focus ~ .cut,
